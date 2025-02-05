@@ -30,7 +30,6 @@ fi
 
 # Install ZSH and required packages
 print_message "Installing ZSH and required packages..."
-sudo apt update
 sudo apt install -y zsh curl git
 
 # Install Oh My Zsh
