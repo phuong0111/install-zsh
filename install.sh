@@ -5,13 +5,26 @@ print_message() {
     echo -e "\n\033[1;34m===> $1\033[0m"
 }
 
+print_error() {
+    echo -e "\n\033[1;31mERROR: $1\033[0m" >&2
+}
+
 # Error handling
+cleanup() {
+    local exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        print_error "An error occurred. Installation failed with exit code: $exit_code"
+        print_error "Please check the error message above and try again."
+    fi
+    exit $exit_code
+}
+
+trap cleanup EXIT
 set -e
-trap 'echo "Error occurred. Installation failed." >&2' ERR
 
 # Check if script is run with sudo
 if [ "$EUID" -eq 0 ]; then
-    echo "Please run this script without sudo"
+    print_error "Please run this script without sudo"
     exit 1
 fi
 
