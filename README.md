@@ -1,3 +1,4 @@
+```sh
 #!/bin/bash
 
 # Print colorized messages
@@ -50,3 +51,4 @@ sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting
 print_message "Installation completed successfully!"
 print_message "Please restart your terminal or run 'source ~/.zshrc' to apply changes."
 print_message "To change your default shell to zsh, run: chsh -s $(which zsh)"
+```
